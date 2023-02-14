@@ -1,6 +1,6 @@
 from main import status, stats, cout_words, queries, get_id, ids
-from yandex import TOKEN, YANDEX
-
+from yandex import YANDEX
+from config import TOKEN
 
 def test_get_dict():
     res = status(stats)
