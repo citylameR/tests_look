@@ -1,5 +1,5 @@
 from main import status, stats, cout_words, queries, get_id, ids
-import pytest
+from yandex import TOKEN, YANDEX
 
 
 def test_get_dict():
@@ -15,3 +15,20 @@ def test_line_number():
 def test_get_id():
     res = get_id(ids)
     assert isinstance(res, list)
+
+
+ya = YANDEX(TOKEN)
+
+
+# ТЕСТ С ОШИБОЙ
+def test_deleted():
+    status_code = '204'
+    res = ya.check_folder_deleted()
+    assert status_code in str(res)
+
+
+# ТЕСТ БЕЗ ОШИБКИ
+def test_created():
+    status_code = '201'
+    res = ya.check_folder_creation()
+    assert status_code in str(res)
